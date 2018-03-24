@@ -9,7 +9,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node index1.js"
+    "test": "node index1.js",
+    "start": "node index1.js"
+
   },
   "author": "saswati",
   "license": "ISC"
