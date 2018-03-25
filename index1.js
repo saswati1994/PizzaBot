@@ -1,4 +1,4 @@
-var express = require('express')
+9   var express = require('express')
 
 var bodyParser = require('body-parser')
 
@@ -9,8 +9,9 @@ app.get('/', function(request, response) {
 response.send('Hello World!')
 })
 app.post('/webhook',function(request,response){
-//console.log(JSON.stringify(request.body));
+console.log(JSON.stringify(request.body));
 console.log("WEBHOOK TRIGRED")
+
 })
 app.listen(app.get('port'), function() {
 console.log("Node app is running at localhost:" + app.get('port'))
