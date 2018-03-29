@@ -10,7 +10,7 @@ response.send('Hello World!')
 })
 app.post('/webhook',function(request,response){
   // console.log(request)
-  console.log("printing message",request.body.result.fulfillment.messages[1])
+  console.log("printing message",request.body.result.fulfillment.messages[0])
 //var jsondata=JSON.parse(request.body);
 console.log(request.body); 
 //console.log(JSON.stringify(request.body));
