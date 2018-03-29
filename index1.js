@@ -9,8 +9,8 @@ app.get('/', function(request, response) {
 response.send('Hello World!')
 })
 app.post('/webhook',function(request,response){
-var jsondata=JSON.parse(request);
-console.log(jsondata.body); 
+var jsondata=JSON.parse(request.body);
+console.log(jsondata); 
 //console.log(JSON.stringify(request.body));
 console.log("WEBHOOK TRIGRED")
 
