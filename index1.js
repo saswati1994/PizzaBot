@@ -12,7 +12,7 @@ app.post('/webhook',function(request,response){
   // console.log(request)
   console.log("printing message",request.body.result.fulfillment.messages[0])
 //var jsondata=JSON.parse(request.body.contexts.parameters.Pizza-types);
-console.log(request.body); 
+//console.log(request.body); 
 //console.log(JSON.stringify(request.body));
 console.log("WEBHOOK TRIGRED")
 
