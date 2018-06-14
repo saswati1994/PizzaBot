@@ -12,7 +12,7 @@ var datapoints={
         {
         name:"megha",
             mail:"saswatidashinfo@gmail.com"
-        }
+        },
         {
         name:"abhilash",
             mail:"abhilashs@suntechnologies.com"
