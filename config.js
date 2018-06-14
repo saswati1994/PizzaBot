@@ -3,18 +3,13 @@ var datapoints={
     mailids:[
         {
             name:"tahir",
-            mail:"tahiri@suntechnologies.com"},
+            mail:"tahiri@suntechnologies.com"
+        },
         {
             name:"donald",
-            mail:"saswatid@suntecnologies.com"
+            mail:"abhishekdash655@gmail.com"
         }
     ]
-
-                
-
     
-
-    
-
 }
 module.exports= datapoints;
