@@ -37,7 +37,9 @@ console.log("Node app is running at localhost:" + app.get('port'))
 function cabrequesthandler(request,response){
 
   console.log("Accumulated data: ", request.body.queryResult.parameters);
-  response.send("i have sent a mail to your manager please wait for approval");
+  
+  var formatedResponse = responseFormator(request,"I have sent a mail for you cab request you get confirmation soon");
+
   var mangerName= request.body.queryResult.parameters.managername
   var managerMail;
   datapoints.mailids.forEach(element => {
@@ -56,5 +58,18 @@ function cabrequesthandler(request,response){
   };
   sgMail.send(msg);
   
+}
+
+
+function responseFormator(request,ResponseText){
+  return facebooResponse={
+    "messages":[
+      {
+        "platform": "facebook",
+        "speech": ResponseText,
+        "type": 0
+      }
+    ]
+  }
 }
 
