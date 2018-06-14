@@ -37,7 +37,7 @@ function cabrequesthandler(request,response){
 
   console.log("Accumulated data: ", request.body.queryResult.parameters);
   response.send("i have sent a mail to your manager please wait for approval");
-  sgMail.setApiKey("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");
+  sgMail.setApiKey(process.env.key);
   const msg = {
     to: 'saswatidashinfo@gmail.com',
     from: 'abhishekdash655@gmail.com',
