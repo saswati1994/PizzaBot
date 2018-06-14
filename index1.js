@@ -66,7 +66,7 @@ function responseFormator(request,ResponseText){
   return {
 
     "fulfillmentText": ResponseText,  
-    "source": string
+    "source": ResponseText
   }
 }
 
