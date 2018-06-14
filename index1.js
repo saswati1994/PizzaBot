@@ -35,7 +35,7 @@ console.log("Node app is running at localhost:" + app.get('port'))
 
 function cabrequesthandler(request,response){
 
-  console.log("Accumulated data: ", request.queryResult.parameters);
+  console.log("Accumulated data: ", request.body.queryResult.parameters);
   response.send("i have sent a mail to your manager please wait for approval");
   sgMail.setApiKey("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");
   const msg = {
