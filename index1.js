@@ -40,7 +40,7 @@ function cabrequesthandler(request,response){
   console.log("Accumulated data: ", request.body.queryResult.parameters);
   
   //storing formated facebook response to send to the user
-  var formatedResponse = responseFormator(request,`i have droped a mail to ${request.body.queryResult.parameters.managername} and a cab request is raised for ${request.body.queryResult.parameters.time}`);
+  var formatedResponse = responseFormator(`i have droped a mail to ${request.body.queryResult.parameters.managername} and a cab request is raised for ${request.body.queryResult.parameters.time}`);
   
   //sending the response to user
   response.send(formatedResponse);
@@ -70,11 +70,11 @@ function cabrequesthandler(request,response){
 }
 
 //function to generate facebook response format 
-function responseFormator(request,ResponseText){
+function responseFormator(ResponseText){
   return {
 
     "fulfillmentText": ResponseText,  
-    "source": ResponseText
+    "source": myserver
   }
 }
 
