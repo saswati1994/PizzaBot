@@ -1,6 +1,7 @@
 var express = require('express')
 const sgMail = require('@sendgrid/mail');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var datapoints = require('./config')
 var app = express()
 
 app.set('port', (process.env.PORT || 5000))
@@ -37,10 +38,19 @@ function cabrequesthandler(request,response){
 
   console.log("Accumulated data: ", request.body.queryResult.parameters);
   response.send("i have sent a mail to your manager please wait for approval");
+  var mangerName= request.body.queryResult.parameters.managername
+  var managerMail;
+  datapoints.mailids.forEach(element => {
+    if(element.name === mangerName){
+
+      managerMail=element.mail
+
+    }
+  });
   sgMail.setApiKey(process.env.key);
   const msg = {
-    to: 'saswatidashinfo@gmail.com',
-    from: 'abhishekdash655@gmail.com',
+    to: managerMail,
+    from: 'saswatidashinfo@gmail.com',
     subject: 'cab request',
     text: 'I want to raise a cab request',
   };
