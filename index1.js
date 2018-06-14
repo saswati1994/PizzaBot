@@ -38,7 +38,7 @@ function cabrequesthandler(request,response){
 
   console.log("Accumulated data: ", request.body.queryResult.parameters);
   
-  var formatedResponse = responseFormator(request,"I have sent a mail for you cab request you get confirmation soon");
+  var formatedResponse = responseFormator(request,`i have droped a mail to ${request.body.queryResult.parameters.managername} and a cab request is raised for ${request.body.queryResult.parameters.time}`);
   response.send(formatedResponse);
 
   var mangerName= request.body.queryResult.parameters.managername
@@ -66,7 +66,7 @@ function responseFormator(request,ResponseText){
   return {
 
     "fulfillmentText": ResponseText,  
-    "source": string
+    "source": ResponseText
   }
 }
 
