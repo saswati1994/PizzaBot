@@ -8,7 +8,7 @@ var datapoints={
         {
             name:"donald",
             mail:"abhishekdash655@gmail.com"
-        }
+        },
         {
         name:"megha",
             mail:"saswatidashinfo@gmail.com"
