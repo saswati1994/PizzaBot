@@ -63,25 +63,51 @@ function cabrequesthandler(request,response){
 
 
 function responseFormator(request,ResponseText){
-  return facebooResponse={
-    status: "ok",
-    speech: ResponseText,
-    displayText:ResponseText,
-    data: {
-        "facebook":[
-            {
-                "sender_action": "typing_on"
-            },
-            {
-                "text": ResponseText,
-            },
-            {
-                "sender_action": "typing_off"
-            },
-        ]
-    },
-    contextOut: [],
-    source: "boehringer-ingelheim"
+  return {
+
+    "fulfillmentText": ResponseText,  
+    "source": string
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// facebooResponse={
+//   status: "ok",
+//   speech: ResponseText,
+//   displayText:ResponseText,
+//   data: {
+//       "facebook":[
+//           {
+//               "sender_action": "typing_on"
+//           },
+//           {
+//               "text": ResponseText,
+//           },
+//           {
+//               "sender_action": "typing_off"
+//           },
+//       ]
+//   },
+//   contextOut: [],
+//   source: "boehringer-ingelheim"
+// }
