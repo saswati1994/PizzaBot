@@ -63,13 +63,24 @@ function cabrequesthandler(request,response){
 
 function responseFormator(request,ResponseText){
   return facebooResponse={
-    "messages":[
-      {
-        "platform": "facebook",
-        "speech": ResponseText,
-        "type": 0
-      }
-    ]
+    status: "ok",
+    speech: ResponseText,
+    displayText:ResponseText,
+    data: {
+        "facebook":[
+            {
+                "sender_action": "typing_on"
+            },
+            {
+                "text": ResponseText,
+            },
+            {
+                "sender_action": "typing_off"
+            },
+        ]
+    },
+    contextOut: [],
+    source: "boehringer-ingelheim"
   }
 }
 
