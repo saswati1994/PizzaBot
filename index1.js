@@ -60,9 +60,7 @@ function cabrequesthandler(request,response){
 
     }
   });
-  function locationhandler(request,response){
-    console.log(JSON.stringify(request.body));
-  }
+  
   //sending mail
   sgMail.setApiKey(process.env.key);
   const msg = {
@@ -74,6 +72,9 @@ function cabrequesthandler(request,response){
   sgMail.send(msg);
   
 }
+function locationhandler(request,response){
+    console.log(JSON.stringify(request.body));
+  }
 
 //function to generate facebook response format 
 function responseFormator(ResponseText){
