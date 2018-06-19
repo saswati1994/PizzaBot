@@ -75,9 +75,9 @@ function cabrequesthandler(request,response){
 function locationhandler(request,response){
     console.log(JSON.stringify(request.body));
   var data= JSON.parse(request.body);
-  var lat = req.body.originalRequest.data.postback.data.lat;
+  var lat = data.originalDetectIntentRequest.payload.data.postback.data.lat;
 
-var long = req.body.originalRequest.data.postback.data.long;
+var long = data.originalDetectIntentRequest.payload.data.postback.data.long;
   console.log(lat);
   console.log(long);
   }
