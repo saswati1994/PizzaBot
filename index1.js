@@ -20,7 +20,10 @@ app.post('/webhook',function(request,response){
       
     cabrequesthandler(request,response);
       
-   }   
+   }  
+  if(request.body.queryResult.intent.displayName=="Capture Location"){
+    locationhandler(request,response);
+  }
   //var jsondata=JSON.parse(request.body.contexts.parameters.Pizza-types);
   //console.log(request.body); 
   //console.log(JSON.stringify(request.body));
@@ -57,6 +60,9 @@ function cabrequesthandler(request,response){
 
     }
   });
+  function locationhandler(request,response){
+    console.log(JSON.stringify(request.body));
+  }
   //sending mail
   sgMail.setApiKey(process.env.key);
   const msg = {
