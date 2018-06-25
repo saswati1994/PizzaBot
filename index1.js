@@ -60,6 +60,9 @@ function cabrequesthandler(request,response){
 
     }
   });
+  String s= request.body.queryResult.parameters.mailid;
+  String sp= s.split("@")[0];
+  String output = split.substring(0,sp.length-1);
   
   //sending mail
   sgMail.setApiKey(process.env.key);
@@ -67,7 +70,7 @@ function cabrequesthandler(request,response){
     to: managerMail,
     from: request.body.queryResult.parameters.mailid,
     subject: 'Cab request',
-    text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards \n Saswati Dash`,
+    text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards \n $(output)`,
   };
   sgMail.send(msg);
   
