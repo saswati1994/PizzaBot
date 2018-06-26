@@ -70,7 +70,7 @@ function cabrequesthandler(request,response){
     to: managerMail,
     from: request.body.queryResult.parameters.mailid,
     subject: 'Cab request',
-    text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards`;
+    text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards`
   
   sgMail.send(msg);
   
