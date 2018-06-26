@@ -60,9 +60,9 @@ function cabrequesthandler(request,response){
 
     }
   });
-  String s= request.body.queryResult.parameters.mailid;
-  String sp= s.split("@")[0];
-  String output = sp.substring(0,sp.length-1);
+  var s= request.body.queryResult.parameters.mailid;
+  var sp= s.split("@")[0];
+  var output = sp.substring(0,sp.length-1);
   
   //sending mail
   sgMail.setApiKey(process.env.key);
