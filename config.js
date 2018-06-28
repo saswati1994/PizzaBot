@@ -11,7 +11,7 @@ var datapoints={
         },
         {
         name:"megha",
-            mail:"saswatidashinfo@gmail.com"
+            mail:"saswatid@suntechnologies.com"
         },
         {
         name:"abhilash",
