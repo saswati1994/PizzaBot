@@ -93,10 +93,12 @@ function locationhandler(request,response){
     if(err){
       console.log("Error in Google maps API call",err)
     }else{
-      console.log("Success Google API call",data);
+      // console.log("Success Google API call",data);
     }
 
-    data.results.forEach(element => {
+    var parsedData= JSON.parse(data);
+
+    parsedData.results.forEach(element => {
       
       var place={
         "lat": element.geometry.location.lat,
