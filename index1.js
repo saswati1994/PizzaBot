@@ -87,7 +87,7 @@ function locationhandler(request,response){
   
   console.log(lat);
   console.log(long);
-  var targets=[]
+  var targets=[];
   NearbyPalceSearch(lat,long,(err,data)=>{
 
     if(err){
@@ -102,19 +102,17 @@ function locationhandler(request,response){
       
       var place={
         "lat": element.geometry.location.lat,
-        "long": element.geometry.location.long,
+        "long": element.geometry.location.lng,
         "targetname": element.name
       }
-      console.log(place);
+      // console.log(place
       targets.push(place);
-
-    
     });
+
+    console.log(targets);
   })
-
-  console.log(targets);
-
-  }
+  
+}
 
 
   //function to generate facebook response format 
