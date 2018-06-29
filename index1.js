@@ -76,44 +76,17 @@ function cabrequesthandler(request,response){
   sgMail.send(msg);
   
 }
-
 function locationhandler(request,response){
-
-  console.log(JSON.stringify(request.body));
+   console.log(JSON.stringify(request.body));
   console.log(request.body.originalDetectIntentRequest.payload.data);
   var lat = request.body.originalDetectIntentRequest.payload.data.postback.data.lat;
   var long = request.body.originalDetectIntentRequest.payload.data.postback.data.long;
   
   console.log(lat);
   console.log(long);
-  var targets=[]
-  NearbyPalceSearch(lat,long,(err,data)=>{
-
-    if(err){
-      console.log("Error in Google maps API call",err)
-    }else{
-      console.log("Success Google API call",data);
-    }
-
-    data.results.forEach(element => {
-      
-      var place={
-        "lat": element.geometry.location.lat,
-        "long": element.geometry.location.long,
-        "targetname": element.name
-      }
-
-      targets.push(place);
-    
-    });
-  })
-
-  console.log(targets);
-
   }
 
-
-  //function to generate facebook response format 
+//function to generate facebook response format 
 function responseFormator(ResponseText){
   return {
 
@@ -123,38 +96,6 @@ function responseFormator(ResponseText){
 }
 
 
-function NearbyPalceSearch(lat,long,callback){
-
-  var options = { 
-    method: 'GET',
-    url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
-    qs: 
-    { location: lat+","+long,
-      radius: '1500',
-      type: 'atm',
-      key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
-    headers: 
-    { 'Cache-Control': 'no-cache' } 
-  };
-
-  request(options, function (error, response, body) {
-    if (error){
-      // console.log(error);
-      callback(error,null);
-    }else{
-      // console.log(body);
-      callback(null,body);
-    }
-
-    
-});
-
-
-
-
-
-
-}
 
 
 
@@ -167,3 +108,31 @@ function NearbyPalceSearch(lat,long,callback){
 
 
 
+
+
+
+
+
+
+
+
+// facebooResponse={
+//   status: "ok",
+//   speech: ResponseText,
+//   displayText:ResponseText,
+//   data: {
+//       "facebook":[
+//           {
+//               "sender_action": "typing_on"
+//           },
+//           {
+//               "text": ResponseText,
+//           },
+//           {
+//               "sender_action": "typing_off"
+//           },
+//       ]
+//   },
+//   contextOut: [],
+//   source: "boehringer-ingelheim"
+// }
