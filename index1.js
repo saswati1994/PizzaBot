@@ -105,8 +105,9 @@ function locationhandler(request,response){
         "long": element.geometry.location.long,
         "targetname": element.name
       }
-
+      console.log(place);
       targets.push(place);
+
     
     });
   })
