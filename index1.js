@@ -116,7 +116,7 @@ function locationhandler(request,response){
   //   response.send(formatedResponse);
 
   // })
-    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+"atm";
+    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts.parameters.poi;
     console.log(MapUrl);
     var formatedResponse = responseFormator(MapUrl);
     response.send(formatedResponse);
