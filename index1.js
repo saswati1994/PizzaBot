@@ -110,7 +110,7 @@ function locationhandler(request,response){
     });
 
     console.log(targets);
-    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+targets[0].long;
+    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+","+targets[0].long;
     console.log(MapUrl);
     var formatedResponse = responseFormator(MapUrl);
     response.send(formatedResponse);
