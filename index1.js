@@ -137,7 +137,7 @@ function NearbyPalceSearch(lat,long,callback){
     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     qs: 
     { location: lat+","+long,
-      radius: '1500',
+      radius: '500',
       type: 'atm',
       key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
     headers: 
