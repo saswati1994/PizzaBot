@@ -116,8 +116,8 @@ function locationhandler(request,response){
   //   response.send(formatedResponse);
 
   // })
-    console.log(request.body.queryResult);
-    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[0].parameters.poi;
+    console.log(request.body.queryResult.outputContexts[1]);
+    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi;
     console.log(MapUrl);
     var formatedResponse = responseFormator(MapUrl);
     response.send(formatedResponse);
