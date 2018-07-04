@@ -111,10 +111,16 @@ function locationhandler(request,response){
     });
 
     console.log(targets);
-    //  var textresponse;
-    //  for(i=0;i<=4:i++){
-    //    textresponse = targets[0].targetname +"-" + targets[0]
-    //  }
+     var textresponse;
+     var status;
+     for(i=0;i<=4;i++){
+       if(targets[i].opennow === true){
+         status= "open"
+       }else{
+         status="closed"
+       }
+       textresponse = targets[i].targetname +"-" + status;
+     }
      //var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+","+targets[0].long;
      //console.log(MapUrl);
      //var formatedResponse = responseFormator(MapUrl);
@@ -122,7 +128,7 @@ function locationhandler(request,response){
 Reversegeocode(lat,long,(err,data)=>{
         console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
         console.log(request.body.queryResult.outputContexts[1]);
-        var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+data.results[1].address_components[1].long_name+"+"+data.results[2].address_components[1].long_name;
+        var MapUrl = textresponse+"\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+data.results[1].address_components[1].long_name+"+"+data.results[2].address_components[1].long_name;
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
