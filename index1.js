@@ -132,7 +132,7 @@ Reversegeocode(lat,long,(err,data)=>{
         var doubleSpaceRemoved = address.replace("  ","+");
         var comaRemoved = doubleSpaceRemoved.replace(",","");
         var finalAddress = comaRemoved.replace(" ","+"); 
-        var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+formatedAddress;
+        var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+finalAddress;
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
