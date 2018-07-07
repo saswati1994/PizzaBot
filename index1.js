@@ -119,7 +119,7 @@ function locationhandler(request,response){
        }else{
          status="closed"
        }
-       textresponse = textresponse+targets[i].targetname +"-" + status;
+       textresponse = textresponse+targets[i].targetname +"-" + status+"\n";
        if(i==4){
        break;
        }
