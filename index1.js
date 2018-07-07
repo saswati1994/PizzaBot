@@ -111,7 +111,7 @@ function locationhandler(request,response){
     });
 
     console.log(targets);
-     var textresponse;
+     var textresponse="";
      var status;
      for(var i=0;i<targets.length;i++){
        if(targets[i].opennow === true){
