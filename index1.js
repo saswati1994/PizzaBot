@@ -113,7 +113,7 @@ function locationhandler(request,response){
     console.log(targets);
      var textresponse;
      var status;
-     for(var i=0;i<=4;i++){
+     for(var i=0;i<=1;i++){
        if(targets[i].opennow === true){
          status= "open"
        }else{
