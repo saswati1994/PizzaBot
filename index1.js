@@ -93,8 +93,8 @@ function locationhandler(request,response){
      if(err){
       console.log("Error in Google maps API call",err)
      }else{
-  console.log("Success Google API call",data);
-  }
+//   console.log("Success Google API call",data);
+  
 
     var parsedData= JSON.parse(data); 
 
@@ -106,7 +106,7 @@ function locationhandler(request,response){
         "targetname": element.name,
         "opennow" : element.opening_hours.open_now
        }
-        console.log(place);
+//         console.log(place);
       targets.push(place);
     });
 
@@ -142,6 +142,7 @@ function locationhandler(request,response){
         response.send(formatedResponse);
 //       })
    })
+   }
   
     
 }
