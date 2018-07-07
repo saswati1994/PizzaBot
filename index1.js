@@ -113,13 +113,16 @@ function locationhandler(request,response){
     console.log(targets);
      var textresponse;
      var status;
-     for(var i=0;i<=1;i++){
+     for(var i=0;i<=targets.length;i++){
        if(targets[i].opennow === true){
          status= "open"
        }else{
          status="closed"
        }
-       textresponse = targets[i].targetname +"-" + status;
+       textresponse = textresponse+targets[i].targetname +"-" + status;
+       if(i==4){
+       break;
+       }
      }
      //var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+","+targets[0].long;
      //console.log(MapUrl);
