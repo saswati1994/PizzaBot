@@ -125,19 +125,19 @@ function locationhandler(request,response){
      //console.log(MapUrl);
      //var formatedResponse = responseFormator(MapUrl);
      //response.send(formatedResponse);
-Reversegeocode(lat,long,(err,data)=>{
-        console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
-        console.log(request.body.queryResult.outputContexts[1]);
-        var address = data.results[0].formatted_address;
-        var doubleSpaceRemoved = address.replace("  ","+");
-        var comaRemoved = doubleSpaceRemoved.replace(",","");
-        var finalAddress = comaRemoved.replace(" ","+"); 
+// Reversegeocode(lat,long,(err,data)=>{
+//         console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
+//         console.log(request.body.queryResult.outputContexts[1]);
+//         var address = data.results[0].formatted_address;
+//         var doubleSpaceRemoved = address.replace("  ","+");
+//         var comaRemoved = doubleSpaceRemoved.replace(",","");
+//         var finalAddress = comaRemoved.replace(" ","+"); 
        // var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+finalAddress;
-        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/atms+near+me/@"+lat+","+long;
+        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/atms+near+me;
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
-      })
+//       })
    })
   
     
