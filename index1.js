@@ -131,7 +131,7 @@ Reversegeocode(lat,long,(err,data)=>{
         var address = data.results[0].formatted_address;
         var cleanupaddress = address.replace(",","");
         var formatedAddress = cleanupaddress.replace(" ","+");
-        var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[0].parameters.poi+"+"+formatedAddress;
+        var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+formatedAddress;
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
