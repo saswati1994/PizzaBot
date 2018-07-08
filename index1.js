@@ -141,8 +141,9 @@ function locationhandler(request,response){
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
 //       })
-   })
+   
    }
+     })
   
     
 }
