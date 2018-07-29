@@ -69,6 +69,7 @@ function cabrequesthandler(request,response){
   sgMail.setApiKey(process.env.key);
   const msg = {
     to: managerMail,
+    cc: 'facility@suntechnologies.com',
     from: request.body.queryResult.parameters.mailid,
     subject: 'Cab request',
     text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards`
@@ -88,7 +89,8 @@ function locationhandler(request,response){
   console.log(lat);
   console.log(long);
   var targets=[];
-   NearbyPalceSearch(lat,long,(err,data)=>{
+  var search = request.body.queryResult.outputContexts[0].parameters.poi;
+   NearbyPalceSearch(lat,long,search,(err,data)=>{
 
      if(err){
       console.log("Error in Google maps API call",err)
@@ -97,7 +99,7 @@ function locationhandler(request,response){
   
 
     var parsedData= JSON.parse(data); 
-
+    console.log("TEST DATA",parsedData.results[0]);
      parsedData.results.forEach(element => {
       
       var place={
@@ -124,19 +126,8 @@ function locationhandler(request,response){
        break;
        }
      }
-     //var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+","+targets[0].long;
-     //console.log(MapUrl);
-     //var formatedResponse = responseFormator(MapUrl);
-     //response.send(formatedResponse);
-// Reversegeocode(lat,long,(err,data)=>{
-//         console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
-//         console.log(request.body.queryResult.outputContexts[1]);
-//         var address = data.results[0].formatted_address;
-//         var doubleSpaceRemoved = address.replace("  ","+");
-//         var comaRemoved = doubleSpaceRemoved.replace(",","");
-//         var finalAddress = comaRemoved.replace(" ","+"); 
-       // var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+finalAddress;
-        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/atms+near+me";
+         var searchplace =search; 
+        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
@@ -159,15 +150,16 @@ function responseFormator(ResponseText){
 }
 
 
-function NearbyPalceSearch(lat,long,callback){
+function NearbyPalceSearch(lat,long,search,callback){
 
+   
    var options = { 
      method: 'GET',
      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
      qs: 
      { location: lat+","+long,
        radius: '1000',
-      type: 'atm',
+      type: search,
        key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
      headers: 
      { 'Cache-Control': 'no-cache' } 
@@ -178,7 +170,7 @@ function NearbyPalceSearch(lat,long,callback){
        // console.log(error);
        callback(error,null);
     }else{
-      // console.log(body);
+       //console.log(body);
        callback(null,body);
      }
 
@@ -187,26 +179,4 @@ function NearbyPalceSearch(lat,long,callback){
 
  }
 
-function Reversegeocode(lat,long,callback){
 
-  var options = { 
-        method: 'GET',
-        url: "https://maps.googleapis.com/maps/api/geocode/json?" ,
-        qs: 
-        { latlng: lat+","+long,
-          key: 'AIzaSyAPEp-nSzbgXSRGF1Hj0hzkPKevn3vf4z8' },
-        headers: 
-        { 'Cache-Control': 'no-cache' } 
-      };
-
-
-      request(options, function (error, response, body) {
-            if (error){
-              // console.log(error);
-              callback(error,null);
-            }else{
-              // console.log(body);
-              callback(null,JSON.parse(body));
-            }    
-        });
-      }
