@@ -90,6 +90,7 @@ function locationhandler(request,response){
   console.log(long);
   var targets=[];
   var search = request.body.queryResult.outputContexts[0].parameters.poi;
+  console.log("SEARCH PARAMETER",search);
    NearbyPalceSearch(lat,long,search,(err,data)=>{
 
      if(err){
@@ -104,7 +105,7 @@ function locationhandler(request,response){
       
       var place={
          "lat": element.geometry.location.lat,
-       "long": element.geometry.location.lng,
+        "long": element.geometry.location.lng,
         "targetname": element.name,
         "opennow" : element.opening_hours.open_now
        }
@@ -126,7 +127,7 @@ function locationhandler(request,response){
        break;
        }
      }
-         var searchplace =search; 
+        var searchplace = search; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
@@ -178,5 +179,4 @@ function NearbyPalceSearch(lat,long,search,callback){
  });
 
  }
-
 
