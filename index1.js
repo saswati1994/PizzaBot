@@ -89,7 +89,7 @@ function locationhandler(request,response){
   console.log(lat);
   console.log(long);
   var targets=[];
-  console.log(request.body.queryResult.outputContexts[0].parameters)
+  console.log(request.body.queryResult.outputContexts[1].parameters)
   var search = request.body.queryResult.outputContexts[0].parameters.poi;
   console.log("SEARCH PARAMETER",search);
    NearbyPalceSearch(lat,long,search,(err,data)=>{
