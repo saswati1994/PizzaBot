@@ -101,9 +101,9 @@ function locationhandler(request,response){
   
 
     var parsedData= JSON.parse(data); 
-    console.log("TEST DATA",parsedData.results[0]);
+//     console.log("TEST DATA",parsedData.results[0]);
      parsedData.results.forEach(element => {
-      
+      console.log(element.opening_hours);
       var place={
          "lat": element.geometry.location.lat,
         "long": element.geometry.location.lng,
